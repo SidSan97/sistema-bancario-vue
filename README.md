@@ -1,2 +1,2 @@
-# sistema-banc-rio-vue
+# sistema-bancario-vue
 sistema bancário vue
