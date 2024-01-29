@@ -1,49 +1,95 @@
 <template>
-  <div class="container">  
-    <div class="classeForm" id="app">
-        <h1 class="mt-4">Cadastrar Veiculos</h1> <br>
+    <div class="container">
+        <h1 class="titulo">Escolha uma opção</h1>
 
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="modelo">Modelo</label>
-                <input class="form-control" type="text" id="modelo">
+        <div class="row">
+            <div class="col-lg-4 mb-2">
+                <a href="transferir" class="link">
+                    <div class="quadro bg-primary rounded">
+                        <img src="img/edit.png" alt="" srcset=""> 
+                        <span>Fazer Transferência</span>                
+                    </div>
+                </a>
             </div>
 
-            <div class="form-group">
-                <label for="cor">Cor</label>
-                <input class="form-control" type="text" id="cor" >
+            <div class="col-lg-4 mb-2">
+                <a href="deposito" class="link">
+                    <div class="quadro bg-warning rounded">
+                        <img src="img/list.png" alt="" srcset=""> 
+                        <span>Fazer um Depósito</span>
+                    </div>
+                </a>
             </div>
 
-            <div class="form-group">
-                <label for="ano">Ano</label>
-                <input class="form-control" type="text" id="ano" >
+            <div class="col-lg-4 mb-2">
+                <a href="buscar-veiculo.html" class="link">
+                    <div class="quadro bg-success rounded">
+                        <img src="img/search.png" alt="" srcset=""> 
+                        <span>Fazer busca por um veiculo</span>
+                    </div>
+                </a>
             </div>
-
-            <div class="form-group">
-                <label for="">Placa</label>
-                <input class="form-control" type="text" id="placa" v-model="formData.placa">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-
-        <button class="btn btn-warning"><a href="index.html" class="text-dark">Voltar</a></button>
-
-        <!--div v-if="submitted">
-            <p>Formulário enviado com sucesso!</p>
-        </div-->
-    </div>
+        </div>
     </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<style scoped>
+    body
+    {
+        margin: 0;
+        padding: 0;
+    }
 
-export default {
+    .titulo
+    {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .quadro
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .quadro img
+    {
+        margin-bottom: 25px;
+        width: 74px;
+        height: 74px;
+    }
+
+    .quadro span
+    {
+        font-size: 26px;
+        font-weight: 500;
+        color: #262626;
+    }
+
+    .link
+    {
+        color: black;
+        text-decoration: none;
+    }
+
+    .link:link
+    {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<script>
+ import HelloWorld from '@/components/HelloWorld.vue'
+
+ export default {
   name: 'HomeView',
   components: {
     HelloWorld
   }
-}
+ }
 </script>

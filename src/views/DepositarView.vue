@@ -1,17 +1,17 @@
 <template>
     <div class="container">  
-      <div class="classeForm" id="app">
-            <h1 class="mt-4">Faça aqui sua transferência</h1> <br>
+        <div class="classeForm" id="app">
+            <h1 class="mt-4">Faça aqui o seu depósito</h1> <br>
 
             <form @submit.prevent="submitForm">
                 <div class="form-group">
-                    <label for="num_conta_destinatario">Número da conta destinatária</label>
-                    <input class="form-control" type="text" id="num_conta_destinatario" v-model="formData.num_conta_destinatario" required>
+                    <label for="num_conta">Número da conta destinatária</label>
+                    <input class="form-control" type="text" id="num_conta" v-model="formData.num_conta" required>
                 </div>
     
                 <div class="form-group">
-                    <label for="valor_transferencia">Valor da transferência</label>
-                    <input class="form-control" type="text" id="valor_transferencia" v-model="formData.valor_transferencia" required>
+                    <label for="valor_deposito">Valor do depósito</label>
+                    <input class="form-control" type="text" id="valor_deposito" v-model="formData.valor_deposito" required>
                 </div>
     
                 <button type="submit" class="btn btn-primary">Enviar</button>
@@ -22,7 +22,7 @@
             <div v-if="submitted">
                 <p>{{ this.responseMessage }}</p>
             </div>
-      </div>
+        </div>
     </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
     async submitForm() {
    
       try {
-        const response = await axios.post('http://localhost/sistema-bancario-laravel/public/api/transferencia', this.formData);
+        const response = await axios.post('http://localhost/sistema-bancario-laravel/public/api/depositar', this.formData);
 
         this.responseMessage = response.data.message;
         this.submitted = true;
