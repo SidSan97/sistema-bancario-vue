@@ -6,7 +6,7 @@
             <div class="col-lg-4 mb-2">
                 <a href="transferir" class="link">
                     <div class="quadro bg-primary rounded">
-                        <img src="img/edit.png" alt="" srcset=""> 
+                        <img src="img/transferencia.png" alt="" srcset=""> 
                         <span>Fazer Transferência</span>                
                     </div>
                 </a>
@@ -15,17 +15,17 @@
             <div class="col-lg-4 mb-2">
                 <a href="deposito" class="link">
                     <div class="quadro bg-warning rounded">
-                        <img src="img/list.png" alt="" srcset=""> 
+                        <img src="img/deposito.png" alt="" srcset=""> 
                         <span>Fazer um Depósito</span>
                     </div>
                 </a>
             </div>
 
             <div class="col-lg-4 mb-2">
-                <a href="buscar-veiculo.html" class="link">
+                <a href="extrato" class="link">
                     <div class="quadro bg-success rounded">
-                        <img src="img/search.png" alt="" srcset=""> 
-                        <span>Fazer busca por um veiculo</span>
+                        <img src="img/extrato-bancario.png" alt="" srcset=""> 
+                        <span>Extrato</span>
                     </div>
                 </a>
             </div>
