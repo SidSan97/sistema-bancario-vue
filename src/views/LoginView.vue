@@ -20,6 +20,14 @@
                         <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
                     </div>
                 </form>
+
+                <div class="form-group">
+                        <span class="text-light">Não tem uma conta?</span> <a href="cadastro" class="CreateAccount" value="Login">Cadastre-se agora</a>
+                </div>
+
+                <div v-if="this.messageError != ''" class="alert alert-danger" role="alert">
+                    {{ this.messageError }}
+                </div>
             </div>
         </div>
     </div>
@@ -57,11 +65,12 @@ margin-bottom: 5%;
     color: #0062cc;
     background-color: #fff;
 }
-.login-form-2 .ForgetPwd{
+.login-form-2 .ForgetPwd, .CreateAccount{
     color: #fff;
     font-weight: 600;
     text-decoration: none;
 }
+
 </style>
 
 <script>
@@ -71,7 +80,8 @@ export default {
     data() {
        return {
             email: '',
-            password: ''
+            password: '',
+            messageError: '',
        }
     },
 
@@ -98,7 +108,11 @@ export default {
             }).then(response => response.json())
               .then(res => {
                 Cookie.set('_myapp_token', res.access_token)
-                console.log(res)
+                console.log(res.error)
+
+                if(res.error != '') {
+                    this.messageError = res.error
+                }
             })
         },
     },
