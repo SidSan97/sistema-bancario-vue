@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Guard from '../services/middleware.js'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: Guard.auth,
   },
   {
     path: '/about',
@@ -19,13 +21,33 @@ const routes = [
     path: '/transferir',
     name: 'transferir',
 
-    component: () => import(/* webpackChunkName: "about" */ '../views/TransferirView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/TransferirView.vue'),
+    beforeEnter: Guard.auth,
   },
   {
     path: '/deposito',
     name: 'deposito',
 
-    component: () => import(/* webpackChunkName: "about" */ '../views/DepositarView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/DepositarView.vue'),
+    beforeEnter: Guard.auth,
+  },
+  {
+    path: '/inicio',
+    name: 'inicio',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/InicioView.vue'),
+  },
+  {
+    path: '/cadastro',
+    name: 'cadastro',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/CadastrarView.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
   },
 ]
 
