@@ -152,7 +152,6 @@ export default {
   },
   methods: {
     async submitForm() {
-   console.log(this.formData)
       try {
         const response = await axios.post('http://localhost/sistema-bancario-laravel/public/api/criar-conta', this.formData);
 
