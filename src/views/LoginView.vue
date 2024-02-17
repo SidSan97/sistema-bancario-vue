@@ -96,7 +96,7 @@ export default {
                 email: this.email,
                 password: this.password,
             };
-
+            
             fetch('http://localhost/sistema-bancario-laravel/public/api/auth/login', {
                 method: 'POST',
                 headers: {
@@ -112,10 +112,14 @@ export default {
 
                 if(res.error != '') {
                     this.messageError = res.error
-                } else {
+                } 
+
+                if(res.error == undefined)
                     this.$router.push({ name: 'home' });
-                }
             })
+            .catch(error => {
+                console.error('Erro ao fazer login:', error);
+            });
         },
     },
 }
