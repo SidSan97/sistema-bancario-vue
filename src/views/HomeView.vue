@@ -31,7 +31,14 @@
             </div>
 
             <p>
-                <button @click="verSaldo()" class="btn btn-primary">Ver saldo</button>
+                <button  @click="getSaldo" class="btn btn-primary">Ver saldo</button>
+            </p>
+
+            <p v-if="this.responseMessage !== ''">
+                <span>Saldo atual: R${{ this.responseMessage }}</span>
+            </p>
+            <p v-if="this.error !== ''">
+                <span > {{this.error}} </span>
             </p>
         </div>
     </div>
@@ -88,29 +95,27 @@
 </style>
 
 <script>
- import HelloWorld from '@/components/HelloWorld.vue'
+ import axios from 'axios';
 
  export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  },
-  methods: {
-    async getSaldo() {
-        try {
-        const response = await axios.get('http://localhost/sistema-bancario-laravel/public/api/saldo');
-
-        this.responseMessage = response.data.message;
-        this.submitted = true;
-      } catch (error) {
-
-        if (error.response && error.response.data && error.response.data.message) {
-          this.responseMessage = error.response.data.message;
-        } else {
-          this.responseMessage = 'Erro ao enviar o formulário. Por favor, tente novamente.';
+    data() {
+        return {
+            responseMessage: '',
+            error: '',
+       }
+    },
+    created() {
+       // this.getSaldo();
+    },
+    methods: {
+        async getSaldo() {
+            try {
+                const response = await axios.get('http://localhost/sistema-bancario-laravel/public/api/saldo');
+                this.responseMessage = response.data.message;
+            } catch (error) {
+                this.error = error.message;
+            }
         }
-      }
     }
-  }
  }
 </script>
