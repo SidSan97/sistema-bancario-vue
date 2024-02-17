@@ -98,7 +98,7 @@
   methods: {
     async getSaldo() {
         try {
-        const response = await axios.get('http://localhost/sistema-bancario-laravel/public/api/criar-conta', this.formData);
+        const response = await axios.get('http://localhost/sistema-bancario-laravel/public/api/saldo');
 
         this.responseMessage = response.data.message;
         this.submitted = true;
