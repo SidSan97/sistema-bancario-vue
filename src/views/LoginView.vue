@@ -112,6 +112,8 @@ export default {
 
                 if(res.error != '') {
                     this.messageError = res.error
+                } else {
+                    this.$router.push({ name: 'home' });
                 }
             })
         },
