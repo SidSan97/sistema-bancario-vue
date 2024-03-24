@@ -30,17 +30,10 @@
                 </a>
             </div>
 
-            <p>
-                <button  @click="getSaldo" class="btn btn-primary">Ver saldo</button>
-            </p>
-
-            <p v-if="this.responseMessage !== ''">
-                <span>Saldo atual: R${{ this.responseMessage }}</span>
-            </p>
-            <p v-if="this.error !== ''">
-                <span > {{this.error}} </span>
-            </p>
+            <get-saldo></get-saldo>
+           
         </div>
+        <button @click="logout" class="btn btn-warning">Sair</button><br>
     </div>
 </template>
 
@@ -95,27 +88,21 @@
 </style>
 
 <script>
- import axios from 'axios';
+ import GetSaldo from '@/components/GetSaldo.vue';
 
  export default {
     data() {
         return {
-            responseMessage: '',
-            error: '',
+           
        }
     },
-    created() {
-       // this.getSaldo();
+    components: {
+        GetSaldo,
     },
-    methods: {
-        async getSaldo() {
-            try {
-                const response = await axios.get('http://localhost/sistema-bancario-laravel/public/api/saldo');
-                this.responseMessage = response.data.message;
-            } catch (error) {
-                this.error = error.message;
-            }
-        }
-    }
+    computed: {
+        logout() {
+            this.$router.push({ name: 'login' });
+        },
+    },
  }
 </script>
